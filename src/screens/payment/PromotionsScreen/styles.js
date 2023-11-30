@@ -1,0 +1,117 @@
+import {StyleSheet} from 'react-native';
+
+export default StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'white',
+  },
+  header: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    paddingBottom: 25,
+  },
+  headerFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: 'black',
+    marginLeft: 20,
+  },
+  headerButton: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#a1705a',
+  },
+  form: {
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    marginVertical: 15,
+  },
+  inputContainer: {
+    width: '70%',
+    height: 45,
+    borderWidth: 0,
+    borderColor: '#ccc',
+    borderWidth: 0.7,
+    borderRadius: 5,
+    color: '#000',
+    paddingTop: 3,
+    marginBottom: 15,
+  },
+  inputContainerLabel: {
+    fontSize: 12,
+    fontWeight: '400',
+    color: '#666',
+    paddingHorizontal: 10,
+    position: 'absolute',
+    top: 5,
+  },
+  inputContainerInput: {
+    height: 40,
+    color: 'black',
+    paddingHorizontal: 10,
+    marginTop: 8,
+  },
+  button: {
+    width: 100,
+    height: 45,
+    backgroundColor: 'black',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+
+  body: {
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+    borderTopColor: '#f3f3f3',
+    borderTopWidth: 8,
+  },
+  promotionsContainerHeading: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: 'black',
+    marginBottom: 10,
+  },
+  promotionsContainer: {
+    backgroundColor: '#f3f3f3',
+    borderRadius: 15,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+  },
+  promotionsHeading: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#000',
+    marginBottom: 3,
+  },
+  promotionsInfo: {
+    fontSize: 12,
+    fontWeight: '400',
+    color: '#666',
+    marginBottom: 10,
+  },
+  promotionsStatus: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#666',
+    marginTop: 5,
+    paddingTop: 10,
+    borderTopColor: '#ccc',
+    borderTopWidth: 0.4,
+  },
+});

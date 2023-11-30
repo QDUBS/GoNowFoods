@@ -1,0 +1,118 @@
+import {StyleSheet} from 'react-native';
+
+export default styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    backgroundColor: 'white',
+    paddingTop: 50,
+  },
+  homeHeader: {
+    backgroundColor: '#fff',
+    width: '100%',
+    paddingVertical: 20,
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 0.7,
+  },
+  navbar: {
+    backgroundColor: '#900',
+    position: 'relative',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15,
+    paddingHorizontal: 20,
+  },
+  menu_button: {
+    marginLeft: 7,
+  },
+  profile__pic: {
+    width: 43,
+    height: 43,
+    borderRadius: 100,
+    marginLeft: 10,
+    shadowColor: '#52006A',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  homeSearchContainer: {
+    backgroundColor: '#f3f3f3',
+    width: '85%',
+    height: 43,
+    borderRadius: 50 / 2,
+    borderWidth: 0,
+    color: '#000',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  homeSearchInput: {
+    flex: 1,
+  },
+  categoriesContainer: {
+    paddingVertical: 15,
+    borderBottomColor: '#f1f1f1',
+    borderBottomWidth: 7,
+  },
+  recommendedContainer: {
+    paddingTop: 15,
+    borderBottomColor: '#f1f1f1',
+    borderBottomWidth: 7,
+  },
+  recommendedHeadingContainer: {
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  recommendedHeading: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: '500',
+    letterSpacing: 0.5,
+    paddingBottom: 5,
+  },
+  recommendedLink: {
+    color: '#000',
+    fontSize: 13,
+    fontWeight: '400',
+    letterSpacing: 0.5,
+    paddingBottom: 5,
+  },
+  recommendedList: {
+    paddingHorizontal: 10,
+    paddingTop: 13,
+  },
+  nearContainer: {
+    paddingVertical: 15,
+    marginBottom: 50,
+  },
+  nearHeadingContainer: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  nearHeading: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: '500',
+    letterSpacing: 0.5,
+    paddingBottom: 5,
+  },
+  nearLink: {
+    color: '#000',
+    fontSize: 13,
+    fontWeight: '400',
+    letterSpacing: 0.5,
+    paddingBottom: 5,
+  },
+  nearList: {
+    // paddingHorizontal: 10,
+  },
+});
