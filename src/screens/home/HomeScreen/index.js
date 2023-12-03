@@ -11,6 +11,7 @@ import {
   View
 } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import profilepic from '../../../assets/images/profile-pic.jpg';
 import Category from '../../../components/home/Category';

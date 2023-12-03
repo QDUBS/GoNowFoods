@@ -14,16 +14,17 @@ import profilepic from '../../../assets/images/profile-pic.jpg';
 import Advert from '../../../components/explore/Advert';
 import Dish from '../../../components/explore/Dish';
 import RestaurantExploreCard from '../../../components/explore/RestaurantExploreCard';
-import {AppRoutes} from '../../../constants/app_routes';
-import restaurants from '../../../data/restaurants.json';
 import styles from './styles';
 import axios from 'axios';
 import {BASE_URL} from '../../../utils/config';
+import { useNavigation } from '@react-navigation/native';
+import { AppRoutes } from '../../../constants/app_routes';
 
 const ExploreScreen = () => {
-  // const [restaurants, setRestaurants] = useState([]);
-  // const [dishes, setDishes] = useState([]);
-  // const [adverts, setAdverts] = useState([]);
+  const navigation = useNavigation();
+  const [restaurants, setRestaurants] = useState([]);
+  const [dishes, setDishes] = useState([]);
+  const [adverts, setAdverts] = useState([]);
 
   const filtered_restaurants = restaurants.map(restaurant => ({
     id: restaurant.id,
@@ -40,48 +41,48 @@ const ExploreScreen = () => {
     );
   };
 
-  //   const getRestaurants = async () => {
-  //     try {
-  //       const restaurants = await axios.get(`${BASE_URL}/restaurants`);
-  //       setRestaurants(restaurants.data);
-  //     } catch (error) {
-  //       console.error('An error occurred:', error);
-  //     }
-  //   };
+  const getRestaurants = async () => {
+    try {
+      const restaurants = await axios.get(`${BASE_URL}/restaurants`);
+      setRestaurants(restaurants.data);
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
 
-  //   const getDishes = async () => {
-  //     try {
-  //       const dishes = await axios.get(`${BASE_URL}/dishes`);
-  //       setDishes(dishes.data);
-  //     } catch (error) {
-  //       console.error('An error occurred:', error);
-  //     }
-  //   };
+  const getDishes = async () => {
+    try {
+      const dishes = await axios.get(`${BASE_URL}/dishes`);
+      setDishes(dishes.data);
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
 
-  //   const getAdverts = async () => {
-  //     try {
-  //       const adverts = await axios.get(`${BASE_URL}/adverts`);
-  //       setAdverts(adverts.data);
-  //     } catch (error) {
-  //       console.error('An error occurred:', error);
-  //     }
-  //   };
+  const getAdverts = async () => {
+    try {
+      const adverts = await axios.get(`${BASE_URL}/adverts`);
+      setAdverts(adverts.data);
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
 
-  // useEffect(() => {
-  //   getRestaurants();
-  // }, [restaurants]);
+  useEffect(() => {
+    getRestaurants();
+  }, [restaurants]);
 
-  // useEffect(() => {
-  //   getDishes();
-  // }, [dishes]);
+  useEffect(() => {
+    getDishes();
+  }, [dishes]);
 
-  // useEffect(() => {
-  //   getAdverts();
-  // }, [adverts]);
+  useEffect(() => {
+    getAdverts();
+  }, [adverts]);
 
-  // if (!restaurants || !dishes || !adverts) {
-  //   return <ActivityIndicator size={'large'} color={'black'} />;
-  // }
+  if (!restaurants || !dishes || !adverts) {
+    return <ActivityIndicator size={'large'} color={'black'} />;
+  }
 
   return (
     <SafeAreaView>
@@ -114,8 +115,16 @@ const ExploreScreen = () => {
               horizontal
               showsHorizontalScrollIndicator={false}
               style={styles.bestDealList}>
-              {restaurants.map(restaurant => (
-                <Advert key={restaurant.name} advert={{}} onPress={() => {}} />
+              {adverts.map(advert => (
+                <Advert
+                  key={advert.id}
+                  advert={advert}
+                  onPress={() =>
+                    navigation.navigate(AppRoutes.Restaurant, {
+                      id: advert.restaurant_id,
+                    })
+                  }
+                />
               ))}
             </ScrollView>
           </View>
@@ -132,8 +141,14 @@ const ExploreScreen = () => {
               horizontal
               showsHorizontalScrollIndicator={false}
               style={styles.elevateList}>
-              {restaurants.map(restaurant => (
-                <Dish key={restaurant.name} dish={{}} onPress={() => {}} />
+              {dishes.map((dish, index) => (
+                <Dish
+                  key={dish.name}
+                  dish={dish}
+                  onPress={() =>
+                    navigation.navigate(AppRoutes.MenuItem, {id: dish.id})
+                  }
+                />
               ))}
             </ScrollView>
           </View>

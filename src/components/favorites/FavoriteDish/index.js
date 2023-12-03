@@ -6,15 +6,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const FavoriteDish = ({dish, onPress}) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <Image
-        source={require('../../../assets/images/profile-pic.jpg')}
-        style={styles.image}
-      />
+      <Image source={dish?.image} style={styles.image} />
       <View>
         <View>
-          <Text style={styles.dishName}>Rice and Peppered Chicken</Text>
+          <Text style={styles.dishName}>{dish?.name}</Text>
           <View style={styles.dishFlex}>
-            <Text style={styles.dishPrice}>&#x20A6;5,000</Text>
+            <Text style={styles.dishPrice}>
+              &#x20A6;{dish?.price?.toLocaleString()}
+            </Text>
             <MaterialIcons name="favorite" size={18} color={'red'} />
           </View>
         </View>

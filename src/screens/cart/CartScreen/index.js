@@ -110,7 +110,7 @@ const CartScreen = () => {
         }}>
         <Pressable style={styles.button} onPress={onCreateOrder}>
           <Text style={styles.buttonText}>
-            Create order &#8226; &#x20A6;{sumTotal.toLocaleString()}
+            Create order &#8226; &#x20A6;{sumTotal?.toLocaleString()}
           </Text>
         </Pressable>
       </View>

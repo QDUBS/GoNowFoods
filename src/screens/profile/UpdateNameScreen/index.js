@@ -31,7 +31,7 @@ function UpdateNameScreen() {
         first_name: firstname,
         last_name: lastname,
         mobile_number: userProfile.mobile_number,
-        photo: '',
+        photo: userProfile.photo,
       });
 
       if (updateProfile.status === 201) {

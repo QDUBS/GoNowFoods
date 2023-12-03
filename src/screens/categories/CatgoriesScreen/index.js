@@ -1,5 +1,5 @@
-import { useRoute } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import {useRoute} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -20,8 +20,7 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FavoriteDish from '../../../components/favorites/FavoriteDish';
-import { AppRoutes } from '../../../constants/app_routes';
-import restaurants from '../../../data/restaurants.json';
+import {AppRoutes} from '../../../constants/app_routes';
 
 const images = [
   require('../../../assets/images/category-advert-1.png'),
@@ -41,7 +40,7 @@ const CatgoriesScreen = ({navigation}) => {
   const getDishes = async () => {
     try {
       const dishes = await axios.get(
-        `${BASE_URL}/dishes?category_code=${category}`,
+        `${BASE_URL}/dishes/category?category_code=${category}`,
       );
       setDishes(dishes.data);
     } catch (error) {
@@ -135,9 +134,9 @@ const CatgoriesScreen = ({navigation}) => {
         <View style={styles.body}>
           <Text style={styles.heading}>Bakery & Dessert</Text>
 
-          {restaurants.length > 0 && (
+          {dishes.length > 0 && (
             <View style={styles.dishContainer}>
-              {restaurants?.map(dish => (
+              {dishes?.map(dish => (
                 <FavoriteDish key={dish.id} dish={dish} onPress={() => {}} />
               ))}
             </View>

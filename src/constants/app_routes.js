@@ -4,6 +4,8 @@ export class AppRoutes {
   static AuthTab = 'AuthTab';
   static Login = 'Login';
   static Register = 'Register';
+  static PhoneVerificationScreen = 'PhoneVerificationScreen';
+  static ProfileSetupScreen = 'ProfileSetupScreen';
 
   // Home
   static HomeDrawer = 'HomeDrawer';
@@ -51,6 +53,8 @@ export class AppRoutes {
   static OrderDetail = 'OrderDetail';
   static Orders = 'Orders';
   static OrdersScreen = 'OrdersScreen';
+  static OrderCheckoutScreen = 'OrderCheckoutScreen';
+  static Paystack = 'Paystack';
   static OrderNavigator = 'OrderNavigator';
   static OrderUpdatesNavigator = 'OrderUpdatesNavigator';
   static OrderRatingScreen = 'OrderRatingScreen';

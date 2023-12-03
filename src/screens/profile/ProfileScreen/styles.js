@@ -30,13 +30,27 @@ export default StyleSheet.create({
     color: '#a1705a',
   },
   body: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   firstSection: {
     backgroundColor: 'white',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageContainer: {
+    position: 'relative',
+    // backgroundColor: 'black',
+  },
+  imageSelectButton: {
+    backgroundColor: '#ccc',
+    position: 'absolute',
+    top: 0,
+    right: 5,
+    padding: 5,
+    borderWidth: 3,
+    borderColor: '#fff',
+    borderRadius: 100,
   },
   name: {
     color: '#000',
@@ -53,11 +67,12 @@ export default StyleSheet.create({
     marginBottom: 5,
   },
   profile__image: {
-    width: 50,
-    height: 50,
+    width: 80,
+    height: 80,
     borderRadius: 100,
     marginRight: 10,
     marginBottom: 10,
+    position: 'relative',
   },
   ratingContainer: {
     flexDirection: 'row',

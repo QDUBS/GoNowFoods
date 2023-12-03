@@ -26,7 +26,10 @@ const Restaurant = ({restaurant, onPress}) => {
         </View>
 
         <View style={styles.rating}>
-          <Text style={styles.ratingText}>{restaurant.rating.toFixed(1)}</Text>
+          <Text style={styles.ratingText}>
+            {/* {restaurant.rating.toFixed(1)} */}
+            {1.0}
+          </Text>
         </View>
       </View>
     </Pressable>

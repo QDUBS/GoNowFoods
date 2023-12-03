@@ -5,6 +5,7 @@ import OrdersScreen from '../screens/orders/OrdersScreen';
 import OrderNavigator from './OrderNavigator';
 import OrderRatingScreen from '../screens/orders/OrderRatingScreen';
 import ThankYouScreen from '../screens/orders/ThankYouScreen';
+import OrderCheckoutScreen from '../screens/orders/OrderCheckoutScreen';
 
 const OrdersStackNavigator = () => {
   const OrdersStack = createStackNavigator();
@@ -17,6 +18,10 @@ const OrdersStackNavigator = () => {
       <OrdersStack.Screen
         name={AppRoutes.OrdersScreen}
         component={OrdersScreen}
+      />
+      <OrdersStack.Screen
+        name={AppRoutes.OrderCheckoutScreen}
+        component={OrderCheckoutScreen}
       />
       <OrdersStack.Screen
         name={AppRoutes.OrderNavigator}

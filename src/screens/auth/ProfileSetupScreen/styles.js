@@ -48,6 +48,13 @@ export default styles = StyleSheet.create({
     letterSpacing: 0.5,
     paddingBottom: 5,
   },
+  prompt: {
+    color: '#000',
+    fontSize: 14,
+    fontWeight: '400',
+    letterSpacing: 0.5,
+    paddingBottom: 5,
+  },
   loginFormInputContainer: {
     flexDirection: 'column',
     marginBottom: 30,
@@ -60,12 +67,15 @@ export default styles = StyleSheet.create({
     paddingBottom: 5,
   },
   loginFormInput: {
+    backgroundColor: 'rgb(0, 0, 0, 0, 0.1)',
     width: '100%',
-    height: 40,
+    height: 48,
     borderWidth: 0,
-    borderBottomColor: 'rgb(92, 64, 51)',
-    borderBottomWidth: 0.7,
+    borderColor: '#ccc',
+    borderWidth: 0.7,
+    borderRadius: 10,
     color: '#000',
+    paddingLeft: 5,
   },
   loginContainerButtons: {
     width: '100%',
@@ -95,8 +105,8 @@ export default styles = StyleSheet.create({
   },
   loginButtonContainer: {
     width: '100%',
-    position: 'relative',
-    top: 30,
+    position: 'absolute',
+    bottom: 30,
     flexDirection: 'row',
     justifyContent: 'center',
   },

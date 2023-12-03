@@ -5,7 +5,7 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -80,7 +80,7 @@ function DrawerHeader(props) {
             style={styles.ratingContainer}>
             <FontAwesomeIcon icon={faStar} color={'#a1705a'} size={15} />
             <Text style={styles.rating}>
-              {`${profile.rating.toFixed(1)}` || '5.0'}
+              {`${profile?.rating?.toFixed(1)}` || '5.0'}
             </Text>
             <Text style={styles.ratingText}>Rating</Text>
           </Pressable>

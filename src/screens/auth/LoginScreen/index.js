@@ -41,14 +41,6 @@ const LoginScreen = () => {
         </View>
 
         <View style={styles.loginFormContainer}>
-          <View style={styles.loginFormLogoContainer}>
-            <Image
-              source={require('../../../assets/images/gonow-foods-logo.png')}
-              style={styles.logoImage}
-            />
-            <Text style={styles.loginFormHeading}>GONOW FOODS</Text>
-          </View>
-
           <View style={styles.loginForm}>
             <View style={styles.loginFormHeadingContainer}>
               <Text style={styles.loginFormHeading2}>LOGIN</Text>

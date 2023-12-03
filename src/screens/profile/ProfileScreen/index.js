@@ -1,29 +1,30 @@
-import {faStar} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   Image,
   Pressable,
   ScrollView,
+  StatusBar,
   Text,
-  View,
+  View
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import ImagePicker from 'react-native-image-picker';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import {AppRoutes} from '../../../constants/app_routes';
-import styles from './styles';
-import LogoutModal from '../../../components/modals/LogoutModal';
 import DeleteAccountModal from '../../../components/modals/DeleteAccountModal';
-import {useAuthContext} from '../../../context/AuthContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
-import {BASE_URL, GCS_BUCKET} from '../../../utils/config';
+import LogoutModal from '../../../components/modals/LogoutModal';
+import { AppRoutes } from '../../../constants/app_routes';
+import { useAuthContext } from '../../../context/AuthContext';
+import { BASE_URL, GCS_BUCKET } from '../../../utils/config';
 import gcs_keyfile from '../../../utils/gcs_keyfile.json';
+import styles from './styles';
 
 function ProfileScreen() {
   const navigation = useNavigation();
@@ -41,8 +42,8 @@ function ProfileScreen() {
     try {
       const user = await axios.get(`${BASE_URL}/users/${userId}`);
       const profile = await axios.get(`${BASE_URL}/profiles/${userId}`);
-      setUser(user.data);
-      setProfile(profile.data);
+      setUser(user?.data);
+      setProfile(profile?.data);
     } catch (error) {
       console.error('An error occurred:', error);
     }
@@ -111,6 +112,29 @@ function ProfileScreen() {
     // console.log('delete account');
   };
 
+  const selectImage = () => {
+    const options = {
+      title: 'Select Profile Picture',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    ImagePicker?.showImagePicker(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+        return;
+      } else if (response.error) {
+        console.log('ImagePicker Error:', response.error);
+        return;
+      } else {
+        const imageUri = response.uri;
+        uploadImage(imageUri);
+      }
+    });
+  };
+
   useEffect(() => {
     getProfile();
   }, [userId, profile]);
@@ -128,12 +152,17 @@ function ProfileScreen() {
     loadData();
   }, [userId]);
 
-  if (!profile) {
-    return <ActivityIndicator size={'large'} />;
-  }
+  // if (!profile) {
+  //   return <ActivityIndicator size={'large'} />;
+  // }
 
   return (
     <SafeAreaView>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
       <View>
         <View style={styles.container}>
           {/* Header */}
@@ -159,7 +188,7 @@ function ProfileScreen() {
           <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
             {/* First section */}
             <View style={styles.firstSection}>
-              <Pressable onPress={() => {}}>
+              <Pressable onPress={selectImage} style={styles.imageContainer}>
                 <Image
                   source={
                     profile?.photo ||
@@ -167,20 +196,25 @@ function ProfileScreen() {
                   }
                   style={styles.profile__image}
                 />
+                <Pressable
+                  onPress={selectImage}
+                  style={styles.imageSelectButton}>
+                  <Ionicons name="image-outline" size={18} color={'white'} />
+                </Pressable>
               </Pressable>
               <View>
                 <Text style={styles.name}>
-                  {`${profile.first_name} ${profile.last_name}` ||
+                  {`${profile?.first_name} ${profile?.last_name}` ||
                     'Confidence Isaiah'}
                 </Text>
                 <Text style={styles.number}>
-                  {`${profile.mobile_number}` || '+2349034107411'}
+                  {`${profile?.mobile_number}` || '+2349034107411'}
                 </Text>
               </View>
               <View style={styles.ratingContainer}>
                 <FontAwesomeIcon icon={faStar} color={'#a1705a'} size={15} />
                 <Text style={styles.rating}>
-                  {`${profile.rating.toFixed(1)}` || '5.0'}
+                  {`${profile?.rating?.toFixed(1)}` || '5.0'}
                 </Text>
                 <Text style={styles.ratingText}>Rating</Text>
               </View>
@@ -192,7 +226,7 @@ function ProfileScreen() {
                     color={'black'}
                   />
                   <Text style={styles.email}>
-                    {`${user.email}` || 'qdubsmusk@gmail.com'}
+                    {`${user?.email}` || 'qdubsmusk@gmail.com'}
                   </Text>
                 </View>
                 <Pressable onPress={() => {}} style={styles.verifyButton}>
